@@ -109,5 +109,24 @@ public class Main {
         System.out.println("Tempo de busca (ns): " + tempoBuscaB);
         System.out.println("Buscas existentes (hits): " + acertosB + " / " + tamanhoAmostra);
         System.out.println("Buscas inexistentes (miss esperados): " + falhasB + " / " + tamanhoAmostra);
+
+        // ========== 8) Clusterização (colisões por posição da BASE) ==========
+        System.out.println("\n===== ANÁLISE DE CLUSTERIZAÇÃO =====");
+
+        System.out.println("\n-- HashTable A (soma ASCII) --");
+        int[] clustersA = tabelaASCII.getColisoesPorPosicaoBase();
+        for (int i = 0; i < clustersA.length; i++) {
+            if (clustersA[i] > 0) {
+                System.out.printf("Posição %2d → %d colisões%n", i, clustersA[i]);
+            }
+        }
+
+        System.out.println("\n-- HashTable B (A=1..Z=26) --");
+        int[] clustersB = tabelaAZ.getColisoesPorPosicaoBase();
+        for (int i = 0; i < clustersB.length; i++) {
+            if (clustersB[i] > 0) {
+                System.out.printf("Posição %2d → %d colisões%n", i, clustersB[i]);
+            }
+        }
     }
 }
